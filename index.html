@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport">
+    <title>💖</title>
+
+    <!-- PWA -->
+    <link href="manifest.webmanifest" rel="manifest">
+    <meta content="#ff69b4" name="theme-color">
+    <link href="icons/apple-touch-icon.png" rel="apple-touch-icon">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+    <meta content="Countdown" name="apple-mobile-web-app-title">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<canvas id="confetti"></canvas>
+<div class="wrap">
+    <div class="card header">
+        <div class="app-title">
+            <span>Отсчет времени до съедения Дианы 💝</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="name" id="targetName">Next date with GF</div>
+        <div class="next" id="targetWhen">среду, 10 ноября, 2025 в 17:15 (тайское время)</div>
+        <div aria-live="polite" class="timer" id="timer">
+            <div class="unit">
+                <div class="num" id="d">0</div>
+                <div class="lbl" id="days-label">Days</div>
+            </div>
+            <div class="unit">
+                <div class="num" id="h">0</div>
+                <div class="lbl" id="hours-label">Hours</div>
+            </div>
+            <div class="unit">
+                <div class="num" id="m">0</div>
+                <div class="lbl" id="minutes-label">Minutes</div>
+            </div>
+            <div class="unit">
+                <div class="num" id="s">0</div>
+                <div class="lbl" id="seconds-label">Seconds</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">💖</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
