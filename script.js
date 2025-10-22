@@ -7,6 +7,7 @@ if ("serviceWorker" in navigator) {
 
 const $ = (id) => document.getElementById(id);
 const nameEl = $("targetName");
+const titleEl = $("targetTitle");
 const dEl = $("d");
 const hEl = $("h");
 const mEl = $("m");
@@ -16,7 +17,63 @@ const hLabel = $("hours-label");
 const mLabel = $("minutes-label");
 const sLabel = $("seconds-label");
 
-const meetingData = JSON.parse(localStorage.getItem("gfCountdown") || '{"dt":"2025-11-10T10:15:00.000Z","title":"Обнимемся в..."}');
+const titles = [
+    {
+        "title": "Жизнь - это череда событй, мешающих нам с тобой заняться сексом... 😏",
+        "subtitle": "но так будет только до..."
+    },
+    {
+        "title": "До тех пор, пока твои волосы снова не начнут бесить 🙃",
+        "subtitle": ""
+    },
+    {
+        "title": "Осталось чуть-чуть до чуда под названием “мы” 💞",
+        "subtitle": ""
+    },
+    {
+        "title": "Отсчёт до крика “ну наконец-то!” 🥹",
+        "subtitle": ""
+    },
+    {
+        "title": "Готовься к поцелуям 😘💋",
+        "subtitle": ""
+    },
+    {
+        "title": "До слияния двух скучающих котиков 🐱❤️🐱",
+        "subtitle": ""
+    },
+    {
+        "title": "Скоро снова будем глупо улыбаться без причины 😊",
+        "subtitle": ""
+    },
+    {
+        "title": "Ждём момент, когда время перестанет иметь смысл ⏳",
+        "subtitle": ""
+    },
+    {
+        "title": "До встречи, после которой всё остальное неважно 💫",
+        "subtitle": ""
+    },
+    {
+        "title": "Пора наточить коготки любви 🐾😼",
+        "subtitle": ""
+    },
+    {
+        "title": "Пока ты читаешь это — мы уже ближе 💨",
+        "subtitle": ""
+    },
+    {
+        "title": "Время работает на нас (редкий случай) 😉",
+        "subtitle": ""
+    },
+    {
+        "title": "До момента, когда снова забудем про всё вокруг 💕",
+        "subtitle": ""
+    }
+];
+
+
+const meetingData = JSON.parse(localStorage.getItem("gfCountdown") || '{"dt":"2025-11-10T10:15:00.000Z","title":"Обнимемся..."}');
 
 // Confetti canvas
 const confetti = document.getElementById("confetti");
@@ -96,9 +153,10 @@ function isAfterTarget() {
 // Load saved
 const saved = meetingData;
 
-if (saved.title) {
-    nameEl.textContent = saved.title || "Next date with GF";
-}
+const date = new Date().getDate();
+const titleIdx = (date < 20 ? date + 31 : date) - 22;
+nameEl.textContent = titles[titleIdx].subtitle || saved.title || "Next date with GF";
+titleEl.textContent = titles[titleIdx].title;
 
 function fmtDate(dt) {
     try {
