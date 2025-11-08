@@ -178,6 +178,13 @@ function isAfterTarget() {
     return (new Date()) - target > 0;
 }
 
+function isNextDayAfterTarget() {
+    const data = meetingData
+    if (!data.dt) return false;
+    const target = new Date(data.dt);
+    return (new Date().getDate()) - target.getDate() > 0;
+}
+
 // Load saved
 const saved = meetingData;
 
@@ -229,6 +236,11 @@ function tick() {
     // Start confetti every time app is opened after the date
     if (!confettiActive && isAfterTarget()) {
         startConfetti();
+    }
+
+    if (isNextDayAfterTarget()) {
+        const wrap = document.querySelector('.wrap');
+        if (wrap) wrap.style.display = 'none';
     }
 }
 
